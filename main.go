@@ -24,6 +24,26 @@ var cmdMap = map[string]Command {
 		Description: "Print file content",
 		Run: commands.Cat,
 	},
+	"touch": {
+		Description: "Create a file if it does not exist",
+		Run: commands.Touch,
+	},
+	"mkdir": {
+		Description: "Create directory",
+		Run: commands.Mkdir,
+	},
+	"rm": {
+		Description: "Remove a file or an empty directory",
+		Run: commands.Rm,
+	},
+	"mv": {
+		Description: "Move/Rename a file or empty directory",
+		Run: commands.Mv,
+	},
+	"cp": {
+		Description: "Copy a file",
+		Run: commands.Cp,
+	},
 }
 
 func main() {
