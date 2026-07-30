@@ -1,4 +1,4 @@
-package main
+package commands
 
 import (
 	"fmt"
@@ -18,11 +18,11 @@ func (f FileInfo) Display() {
 	}
 }
 
-func ls(arg []string) {
+func Ls(args []string) {
 	
 	dir := "."
-	if len(arg) > 0 {
-		dir = arg[0]
+	if len(args) > 0 {
+		dir = args[0]
 	}
 	
 	dirEntries, err := os.ReadDir(dir)

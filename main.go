@@ -1,9 +1,30 @@
 package main
 
-import ( 
+import (
 	"fmt"
+	"gtools/commands"
 	"os"
 )
+
+type Command struct {
+	Description		string
+	Run				func([]string)
+}
+
+var cmdMap = map[string]Command {
+	"pwd": {
+		Description: "Print working directory",
+		Run: commands.Pwd,
+	},
+	"ls": {
+		Description: "List directory content",
+		Run: commands.Ls,
+	},
+	"cat": {
+		Description: "Print file content",
+		Run: commands.Cat,
+	},
+}
 
 func main() {
 	if len(os.Args) == 1 {
@@ -12,19 +33,12 @@ func main() {
 	}
 
 	cmd := os.Args[1]
-	arg := os.Args[2:]
+	args := os.Args[2:]
 
-	switch cmd {
-	case "pwd": 
-		pwd(arg)
-	
-	case "ls" : 
-		ls(arg)
-
-	case "cat" : 
-		cat(arg)
-
-	default: 
-		fmt.Println("unknown cmd:", cmd)
-	}	
+	command, ok := cmdMap[cmd]
+	if !ok {
+		fmt.Println("Unknown command:", cmd)
+		return
+	}
+	command.Run(args)
 }
