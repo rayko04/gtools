@@ -7,7 +7,7 @@ import (
 
 func Mkdir(args []string) {
 	if len(args) < 1 {
-		fmt.Println("Usage: gtools mkdir <dir>")
+		fmt.Println("Usage: gtools mkdir <directory>")
 		return
 	}
 
